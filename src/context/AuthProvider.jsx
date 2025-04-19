@@ -10,11 +10,17 @@ const AuthProvider = ({children}) => {
    const [userData, setUserData] = useState(null)
 
    useEffect(() => {
-    setLocalStorage()
-    const {employees}= getLocalStorage()
-    setUserData(employees)
+    const localData = getLocalStorage();
     
-   }, [])
+    // Only set default data if nothing is in localStorage
+    if (!localData || !localData.employees) {
+      setLocalStorage(); // set default employee data
+    }
+  
+    const { employees } = getLocalStorage();
+    setUserData(employees);
+  }, []);
+  
    
 
   return (

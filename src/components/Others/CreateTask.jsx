@@ -12,8 +12,6 @@ const CreateTask = () => {
   const [category, setCategory] = useState('')
 
 
-  const [newTask, setNewTask] = useState({})
-
 
   const submitHandler=(e)=>{
        e.preventDefault()
@@ -44,6 +42,7 @@ const CreateTask = () => {
       })
     
       setUserData(updatedUserData)
+      localStorage.setItem('userData', JSON.stringify(updatedUserData)) // Save to localStorage
     
       console.log(updatedUserData)
 
